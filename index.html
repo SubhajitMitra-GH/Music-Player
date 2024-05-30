@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="music-note-color.png">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+
+</head>
+<body>
+    <nav>
+        Music Player<span style="color: red;">.</span>
+    </nav>
+    <div class="container">
+        <div class="music-img">
+            <img src="assets/sample-img.jpg">
+        </div>
+        <div class="fnc">
+            <div class="music-info">
+                <h1>Song</h1>
+                <p class="artist">Artist</p>
+            </div>
+            <div class="progress-bar">
+              <input type="range" min="1" max ="100" value="0" class="seek_slider" onchange="seekTo()">
+                <div class="progress"></div>
+              </div>
+            <div class="controls">
+              <div class="btnC" id="prev" onclick="prev()">
+                <i class="fi fi-sr-rewind"></i>
+              </div>
+              <div class="play-pause" id="reverse" onclick="playpause()" >
+                <i class="fi fi-sr-play play"></i>
+              </div>
+              <div class="btnC" id="next" onclick="nect()">
+                <i class="fi fi-sr-forward"></i>
+              </div>
+              </div>
+         </div>
+        
+    </div>
+    <audio id="audio" src=""></audio>
+    <footer>Copyright &#169; by Subhajit</footer>
+    <script src="main.js"></script> 
+</body>
+
+</html>
