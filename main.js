@@ -136,7 +136,6 @@ seekSlider.onchange=function (){
     
             audio.play();
             console.log(seekSlider.max);
-            setUpdate();
         }
     
 }
