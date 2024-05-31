@@ -13,9 +13,14 @@
     <nav>
         Music Player<span style="color: red;">.</span>
     </nav>
+    <div class="first-block" >
+      <img class="image-main"src="assets/sample-img.jpg" onclick="disp()">
+      <h2 style="margin-top: 6px;" onclick="disp()">PLAY</h2>
+    </div>
+    <div class="big">
     <div class="container">
         <div class="music-img">
-            <img src="assets/sample-img.jpg">
+            <img class="sample-image"src="assets/sample-img.jpg">
         </div>
         <div class="fnc">
             <div class="music-info">
@@ -26,6 +31,7 @@
              
               <input type="range" min="1" value="0" class="seek_slider" >
               
+            
             
                 <div class="progress"></div>
               </div>
@@ -43,6 +49,7 @@
             </div>
               </div>
          </div>
+        </div>
         
     </div>
     <audio id="audio" src=""></audio>

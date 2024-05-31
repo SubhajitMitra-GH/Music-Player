@@ -11,16 +11,41 @@ body{
 .music-img{
     height: 50vh;
     width: 50vh;
+    
 
 
 }
-.music-img img{
+.image-main{
+    height: 40vh;
+    width: 40vh;
+    border-radius: 50%;
+    border: 6px white solid;
+    object-fit: cover; 
+    cursor: pointer; 
+}
+h2{
+    color: #ffffff;
+    cursor: pointer;
+}
+.first-block{
+    height: 89vh;
+    text-align: center;
+    display: flex;
+    margin:10vh;
+}
+h2{
+    font-family: 'Poppins';
+    font-size: xx-large;
+    font-weight: 900;
+}
+.music-img .sample-image{
     height: 100%;
     width: 100%;
     border-radius: 50%;
     border: 6px white solid;
     object-fit: cover;  
 }
+
 .container{
     height: 89vh;
     /* width: 100vh; */
@@ -150,5 +175,17 @@ footer{
 nav{
     padding-left: 0px;
     text-align: center;
+}
+.image-main{
+    display: none;
+}
+h2{
+    background-color: black;
+    padding:15px;
+    border-radius: 20px;
+}
+h2:hover{
+    color: red;
+    
 }
 }

@@ -3,10 +3,12 @@ const icon = button.querySelector('i');
 const audio = document.getElementById('audio');
 const seekSlider = document.querySelector('.seek_slider');
 const name2=document.querySelector('.artist');
-const image2=document.querySelector('img');
+const image2=document.querySelector('.sample-image');
 const songname=document.querySelector('h1');
 const ini=document.querySelector('.initial');
-const fin=document.querySelector('.fin')
+const fin=document.querySelector('.fin');
+const welp=document.querySelector('.first-block');
+const cont=document.querySelector('.big');
 let dur=0;
 const musiclist=[
     {
@@ -47,6 +49,15 @@ audio.onloadedmetadata=function(){
     seekSlider.max=audio.duration;
     seekSlider.value=song.currentTime;
 }
+welp.style.display='block';
+cont.style.display='none';
+function disp(){
+    cont.style.display='block';
+welp.style.display='none';
+playpause();
+
+
+}
 
 //starts playing from the first song 
 function playpause() {
@@ -57,7 +68,7 @@ function playpause() {
         playSong();
         console.log(seekSlider.max);
         setUpdate();
-    } else {
+    } else if(icon.classList.contains('pause')) {
         icon.classList.remove('fi-sr-pause', 'pause');
         icon.classList.add('fi-sr-play', 'play');
         pauseSong();
@@ -136,10 +147,8 @@ seekSlider.onchange=function (){
     
             audio.play();
             console.log(seekSlider.max);
-            setUpdate();
         }
-    
-}
+    }
 audio.addEventListener('ended', function () {
     if(seekSlider.value!==0&&audio.currentTime!==0){
         seekSlider.value=0;
