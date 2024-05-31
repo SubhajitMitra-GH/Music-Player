@@ -23,9 +23,13 @@
                 <p class="artist">Artist</p>
             </div>
             <div class="progress-bar">
-              <input type="range" min="1" max ="100" value="0" class="seek_slider" onchange="seekTo()">
+             
+              <input type="range" min="1" value="0" class="seek_slider" >
+              
+            
                 <div class="progress"></div>
               </div>
+              <div  class="ctrl">
             <div class="controls">
               <div class="btnC" id="prev" onclick="prev()">
                 <i class="fi fi-sr-rewind"></i>
@@ -33,9 +37,10 @@
               <div class="play-pause" id="reverse" onclick="playpause()" >
                 <i class="fi fi-sr-play play"></i>
               </div>
-              <div class="btnC" id="next" onclick="nect()">
+              <div class="btnC" id="next" onclick="next()">
                 <i class="fi fi-sr-forward"></i>
               </div>
+            </div>
               </div>
          </div>
         

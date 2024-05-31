@@ -5,6 +5,9 @@ const seekSlider = document.querySelector('.seek_slider');
 const name2=document.querySelector('.artist');
 const image2=document.querySelector('img');
 const songname=document.querySelector('h1');
+const ini=document.querySelector('.initial');
+const fin=document.querySelector('.fin')
+let dur=0;
 const musiclist=[
     {
         name:'A lot',
@@ -36,9 +39,14 @@ const musiclist=[
         artist:"21 Savage",
         song:'music/SmackThat.mp3'
     }
-]  
+] 
+let c=0;
 let songIndex = 0;
 let isplaying=false;
+audio.onloadedmetadata=function(){
+    seekSlider.max=audio.duration;
+    seekSlider.value=song.currentTime;
+}
 
 //starts playing from the first song 
 function playpause() {
@@ -47,6 +55,7 @@ function playpause() {
         icon.classList.add('fi-sr-pause', 'pause');
 
         playSong();
+        console.log(seekSlider.max);
         setUpdate();
     } else {
         icon.classList.remove('fi-sr-pause', 'pause');
@@ -57,8 +66,13 @@ function playpause() {
 
 function playSong() {
 audio.src=musiclist[songIndex].song;
+if(dur>0){
+audio.currentTime=c;
+}
+
     audio.play();
-    updateProgressBar();
+
+    // updateProgressBar();
     isplaying=true;
 }
 function setUpdate(){
@@ -70,9 +84,11 @@ function setUpdate(){
 function pauseSong() {
     audio.pause();
     c=seekSlider.value;
+    dur=1;
     isplaying=false;
 }
 function prev(){
+    dur=0;
     if(songIndex===0)
         {
             songIndex=4
@@ -88,7 +104,8 @@ function prev(){
                 setUpdate();
             }
 }
-function nect(){
+function next(){
+    dur=0;
     if(songIndex===4){
         songIndex=0;
     }
@@ -103,16 +120,27 @@ function nect(){
         setUpdate();
     }
 }
-function updateProgressBar() {
-
-    audio.addEventListener('timeupdate', () => {
-        const progress =(audio.currentTime / audio.duration) * 100;
-           seekSlider.value = progress;
-    });
+if(audio.play()){
+    setInterval(()=>{seekSlider.value=audio.currentTime},500);
 }
 
-function seekTo() {
-    const seekto = audio.duration * (seekSlider.value / 100);
-    audio.currentTime = seekto;
+seekSlider.onchange=function (){
+    audio.currentTime=seekSlider.value;
 }
+audio.addEventListener('ended', function () {
+    next();
+});
+
+// function updateProgressBar() {
+
+//     audio.addEventListener('timeupdate', () => {
+//         const progress =(audio.currentTime / audio.duration) * 100;
+//            seekSlider.value = progress;
+//     });
+// }
+
+// function seekTo() {
+//     const seekto = audio.duration * (seekSlider.value / 100);
+//     audio.currentTime = seekto;
+// }
 
