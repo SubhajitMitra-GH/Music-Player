@@ -66,7 +66,7 @@ function playpause() {
 
 function playSong() {
 audio.src=musiclist[songIndex].song;
-if(dur>0){
+if(dur>0 && isplaying===false){
 audio.currentTime=c;
 }
 
@@ -89,6 +89,8 @@ function pauseSong() {
 }
 function prev(){
     dur=0;
+    seekSlider.value=0;
+    audio.currentTime=0;
     if(songIndex===0)
         {
             songIndex=4
@@ -106,6 +108,8 @@ function prev(){
 }
 function next(){
     dur=0;
+    seekSlider.value=0;
+    audio.currentTime=0;
     if(songIndex===4){
         songIndex=0;
     }
@@ -126,8 +130,21 @@ if(audio.play()){
 
 seekSlider.onchange=function (){
     audio.currentTime=seekSlider.value;
+        if (icon.classList.contains('play')) {
+            icon.classList.remove('fi-sr-play', 'play');
+            icon.classList.add('fi-sr-pause', 'pause');
+    
+            audio.play();
+            console.log(seekSlider.max);
+            setUpdate();
+        }
+    
 }
 audio.addEventListener('ended', function () {
+    if(seekSlider.value!==0&&audio.currentTime!==0){
+        seekSlider.value=0;
+        audio.currentTime=0;
+    }
     next();
 });
 
